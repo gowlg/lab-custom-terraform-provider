@@ -1,5 +1,5 @@
 ## Requirements
-The only requirement for this lab is *Docker*. The lab will be done in a container that will contain all of the tools you need.
+The only requirement for this lab is *Docker*. The lab will be done in a container that will have all of the tools you need.
 
 If you wish to complete this lab without using Docker you will need to install the following:
 - [Go 1.10](https://golang.org/doc/install)
@@ -16,8 +16,8 @@ The following steps will take you through how to get setup to start the lab.
 ### Step Two: Build the Docker image for the lab
 `docker build -t terraform-provider-lab .`
 
-### Step Three: Run the container mounting the repository directory
-`docker run -it -v $PWD:/go/src/github.com/gowlg/lab-custom-terraform-provider -w /go/src/github.com/alexanderrmcneill/lab-custom-terraform-provider -p 3000:3000 terraform-provider-lab bash`
+### Step Three: Run the container mounting the repository directory and mapping port 3000 to port 3000 of the container
+`docker run -it -v $PWD:/go/src/github.com/gowlg/lab-custom-terraform-provider -w /go/src/github.com/gowlg/lab-custom-terraform-provider -p 3000:3000 terraform-provider-lab bash`
 
 You will now have a bash session inside the lab's docker container.
 
