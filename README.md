@@ -32,3 +32,10 @@ cd ..
 ### Step Five: Open your favorite editor and get hacking
 All go and terraform commands will be run in the the container.
 You can edit the files in an editor outside the container and it will effect the same files inside the container.
+
+
+`go build -o ./test/terraform-provider-uws`
+`cd test`
+`terraform init`
+`terraform apply`
+
