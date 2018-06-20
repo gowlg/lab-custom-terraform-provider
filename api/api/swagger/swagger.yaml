@@ -1,0 +1,246 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "UWS: Unicorn Web Services"
+basePath: /
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /routeTables:
+    x-swagger-router-controller: routeTables
+    get:
+      tags:
+        - Route Tables
+      description: Returns list of route tables
+      operationId: list_route_tables
+      parameters:
+        - name: id
+          type: string
+          in: query
+        - name: vpc_id
+          type: string
+          in: query
+        - name: name
+          type: string
+          in: query
+        - name: cidr
+          type: string
+          in: query
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: string
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      tags:
+        - Route Tables
+      description: Creates a route table
+      operationId: create_route_table
+      parameters:
+        - name: id
+          type: string
+          in: query
+        - name: vpc_id
+          type: string
+          in: query
+        - name: name
+          type: string
+          in: query
+        - name: cidr
+          type: string
+          in: query
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: string
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /instances:
+    x-swagger-router-controller: instances
+    get:
+      tags:
+        - Instances
+      description: Returns list of instances
+      operationId: list_instances
+      parameters:
+        - name: id
+          type: string
+          in: query
+        - name: vpc_id
+          type: string
+          in: query
+        - name: name
+          type: string
+          in: query
+        - name: cidr
+          type: string
+          in: query
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: string
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      tags:
+        - Instances
+      description: Creates a instance
+      operationId: create_instance
+      parameters:
+        - name: id
+          type: string
+          in: query
+        - name: vpc_id
+          type: string
+          in: query
+        - name: name
+          type: string
+          in: query
+        - name: cidr
+          type: string
+          in: query
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: string
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /subnets:
+    x-swagger-router-controller: subnets
+    get:
+      tags:
+        - Subnets
+      description: Returns list of subnets
+      operationId: list_subnets
+      parameters:
+        - name: id
+          type: string
+          in: query
+        - name: vpc_id
+          type: string
+          in: query
+        - name: name
+          type: string
+          in: query
+        - name: cidr
+          type: string
+          in: query
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: string
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      tags:
+        - Subnets
+      description: Creates a subnet
+      operationId: create_subnet
+      parameters:
+        - name: id
+          type: string
+          in: query
+        - name: vpc_id
+          type: string
+          in: query
+        - name: name
+          type: string
+          in: query
+        - name: cidr
+          type: string
+          in: query
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: string
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /vpcs:
+    x-swagger-router-controller: vpcs
+    get:
+      tags:
+        - Vpcs
+      description: Returns list of vpcs
+      operationId: list_vpcs
+      parameters:
+        - name: id
+          type: string
+          in: query
+        - name: vpc_id
+          type: string
+          in: query
+        - name: name
+          type: string
+          in: query
+        - name: cidr
+          type: string
+          in: query
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: string
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      tags:
+        - Vpcs
+      description: Creates a vpc
+      operationId: create_vpc
+      parameters:
+        - name: id
+          type: string
+          in: query
+        - name: vpc_id
+          type: string
+          in: query
+        - name: name
+          type: string
+          in: query
+        - name: cidr
+          type: string
+          in: query
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: string
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /swagger:
+    x-swagger-pipe: swagger_raw
+definitions:
+  
+  ErrorResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string

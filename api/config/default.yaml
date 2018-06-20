@@ -1,0 +1,32 @@
+swagger:
+
+  fittingsDirs: [ api/fittings ]
+  defaultPipe: null
+  swaggerControllerPipe: swagger_controllers
+
+  bagpipes:
+
+    _router:
+      name: swagger_router
+      mockMode: false
+      mockControllersDirs: [ api/mocks ]
+      controllersDirs: [ api/controllers ]
+
+    _swagger_validate:
+      name: swagger_validator
+      validateResponse: true
+
+    _json_error_handler:
+      name: json_error_handler
+      handle500Errors: true
+
+    swagger_controllers:
+      - onError: _json_error_handler
+      - cors
+      - swagger_params_parser
+      - _swagger_validate
+      - express_compatibility
+      - _router
+
+    swagger_raw:
+      name: swagger_raw

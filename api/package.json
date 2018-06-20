@@ -1,0 +1,17 @@
+{
+  "name": "custom_terraform_provider_lab_api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Alex McNeill",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "swagger-express-mw": "^0.7.0",
+    "swagger-ui-dist": "^3.17.1"
+  }
+}
