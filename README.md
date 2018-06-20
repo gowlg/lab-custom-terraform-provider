@@ -11,13 +11,13 @@ If you wish to complete this lab without using Docker you will need to install t
 The following steps will take you through how to get setup to start the lab.
 
 ### Step One: Clone this repository and change in the folder that was created:
-`git clone https://github.com/gowlg/lab-custom-terraform-provider.git && cd lab-custom_terraform_provider`
+`git clone https://github.com/gowlg/lab-custom-terraform-provider.git && cd lab-custom-terraform-provider`
 
 ### Step Two: Build the Docker image for the lab
-`docker build -t terraform_provider_lab .`
+`docker build -t terraform-provider-lab .`
 
 ### Step Three: Run the container mounting the repository directory
-`docker run -it -v $PWD:/go/src/github.com/gowlg/lab-custom_terraform_provider -w /go/src/github.com/alexanderrmcneill/lab-custom_terraform_provider terraform_provider_lab bash`
+`docker run -it -v $PWD:/go/src/github.com/gowlg/lab-custom-terraform-provider -w /go/src/github.com/alexanderrmcneill/lab-custom-terraform-provider terraform-provider-lab bash`
 
 You will now have a bash session inside the lab's docker container.
 
