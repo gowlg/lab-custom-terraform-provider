@@ -9,11 +9,11 @@ func Provider() terraform.ResourceProvider {
 	return &schema.Provider{
 		Schema: map[string]*schema.Schema{},
 		DataSourcesMap: map[string]*schema.Resource{
-			"uws_instance":  datasourceInstance(),
-			"uws_instances": datasourceInstances(),
+			"uws_instance": datasourceInstance(),
+			// "uws_instances": datasourceInstances(),
 		},
 		ResourcesMap: map[string]*schema.Resource{
-			"uws_instance": resourceInstance(),
+			// "uws_instance": resourceInstance(),
 		},
 		ConfigureFunc: providerConfigure,
 	}
