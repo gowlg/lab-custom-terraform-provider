@@ -17,7 +17,7 @@ The following steps will take you through how to get setup to start the lab.
 `docker build -t terraform-provider-lab .`
 
 ### Step Three: Run the container mounting the repository directory
-`docker run -it -v $PWD:/go/src/github.com/gowlg/lab-custom-terraform-provider -w /go/src/github.com/alexanderrmcneill/lab-custom-terraform-provider terraform-provider-lab bash`
+`docker run -it -v $PWD:/go/src/github.com/gowlg/lab-custom-terraform-provider -w /go/src/github.com/alexanderrmcneill/lab-custom-terraform-provider -p 3000:3000 terraform-provider-lab bash`
 
 You will now have a bash session inside the lab's docker container.
 
