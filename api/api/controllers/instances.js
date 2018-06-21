@@ -89,7 +89,7 @@ function update_instance(req, res) {
 
     found_instances[0].name = req.swagger.params.body.value.name;
     found_instances[0].memory = req.swagger.params.body.value.memory;
-    found_instances[0].type = req.swagger.params.body.value.tag;
+    found_instances[0].type = req.swagger.params.body.value.type;
     found_instances[0].private = req.swagger.params.body.value.private;
     found_instances[0].tag = req.swagger.params.body.value.tag;
 

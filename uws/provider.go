@@ -7,19 +7,27 @@ import (
 
 func Provider() terraform.ResourceProvider {
 	return &schema.Provider{
-		Schema: map[string]*schema.Schema{},
+		Schema: map[string]*schema.Schema{
+			"base_url": {
+				Type:        schema.TypeString,
+				Required:    true,
+				Description: "The base URL of the UWS API",
+			},
+		},
 		DataSourcesMap: map[string]*schema.Resource{
 			"uws_instance": datasourceInstance(),
-			// "uws_instances": datasourceInstances(),
 		},
 		ResourcesMap: map[string]*schema.Resource{
-			// "uws_instance": resourceInstance(),
+			"uws_instance": resourceInstance(),
 		},
 		ConfigureFunc: providerConfigure,
 	}
 }
 
 func providerConfigure(d *schema.ResourceData) (interface{}, error) {
-	var config interface{}
-	return config, nil
+	config := Config{
+		BaseUrl: d.Get("base_url").(string),
+	}
+
+	return &config, nil
 }

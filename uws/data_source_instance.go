@@ -1,23 +1,10 @@
 package uws
 
 import (
-	"encoding/json"
-	"fmt"
-	"io/ioutil"
-	"net/http"
 	"time"
 
 	"github.com/hashicorp/terraform/helper/schema"
 )
-
-type Instance struct {
-	ID      int    `json:"id"`
-	Name    string `json:"number"`
-	Memory  int    `json:"memory"`
-	Type    string `json:"type"`
-	Tag     string `json:"tag"`
-	Private bool   `json:"private"`
-}
 
 func datasourceInstance() *schema.Resource {
 	return &schema.Resource{
@@ -53,32 +40,17 @@ func datasourceInstance() *schema.Resource {
 }
 
 func datasourceInstanceRead(d *schema.ResourceData, m interface{}) error {
-	var err error
+	config := m.(*Config)
 
-	instanceID := d.Get("instance_id")
-	url := fmt.Sprintf("http://localhost:3000/instances/%v", instanceID)
+	instanceID := d.Get("instance_id").(int)
 
-	resp, err := http.Get(url)
-
-	if err != nil {
-		return err
-	}
-
-	defer resp.Body.Close()
-
-	if resp.StatusCode != 200 {
-		return fmt.Errorf("Expected status code 200 but got %v", resp.StatusCode)
-	}
-
-	body, err := ioutil.ReadAll(resp.Body)
+	uwsClient, err := NewClient(config.BaseUrl)
 
 	if err != nil {
 		return err
 	}
 
-	var instance Instance
-
-	err = json.Unmarshal(body, &instance)
+	instance, err := uwsClient.ReadInstance(instanceID)
 
 	if err != nil {
 		return err
