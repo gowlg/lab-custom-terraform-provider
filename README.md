@@ -16,12 +16,12 @@ The following steps will take you through how to get setup to start the lab.
 ### Step Two: Build the Docker image for the lab
 `docker build -t terraform-provider-lab .`
 
-### Step Three: Run the container mounting the repository directory and mapping port 3000 to port 3000 of the container
+### Step Three: Run the lab container
 `docker run -it -v $PWD:/go/src/github.com/gowlg/lab-custom-terraform-provider -w /go/src/github.com/gowlg/lab-custom-terraform-provider -p 3000:3000 terraform-provider-lab bash`
 
 You will now have a bash session inside the lab's docker container.
 
-### Step Five: Start the API
+### Step Four: Start the API
 ```
 cd ./api
 npm install
@@ -33,9 +33,15 @@ cd ..
 All go and terraform commands will be run in the the container.
 You can edit the files in an editor outside the container and it will effect the same files inside the container.
 
+## Objective
+The objective of this lab is to fill in the providers missing code to get terraform configuration that can be found [here](/test) to run.
 
-`go build -o ./test/terraform-provider-uws`
-`cd test`
-`terraform init`
-`terraform apply`
+To test your provider do the following:
+- Get the required packages: `go get -v`
+- Build the terraform provider into the test directory: `go build -o ./test/terraform-provider-uws`
+- Change directory into test: `cd ./test`
+- Run `terraform init` update the provider
+- Run `terraform apply` to test everything
 
+# References
+- [Writing Custom Terraform Providers](https://www.terraform.io/docs/extend/writing-custom-providers.html)
