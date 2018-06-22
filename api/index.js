@@ -20,10 +20,6 @@ SwaggerExpress.create(config, function(err, swaggerExpress) {
         res.render('swaggerUI');
     });
 
-    app.use((req, res, next) => {
-        console.log(req.body)
-        next()
-    })
     app.use('/docs/assets', express.static(swaggerUiAssetPath));
 
     swaggerExpress.register(app);
